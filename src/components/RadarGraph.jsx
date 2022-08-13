@@ -8,15 +8,22 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+/**
+ * @component
+ * @memberOf Content
+ * @description This graph shows us the performance score of a user
+ * @param {array} props Performances datas of the user
+ */
+
 function RadarGraph({ data }) {
   return (
     <article className="panel-graph radar-graph">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
+        <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
           <PolarGrid />
           <PolarAngleAxis
             dataKey="subject"
-            tick={{ fill: "white", fontSize: 15, fontWeight: 500 }}
+            tick={{ fill: "white", fontSize: 10, fontWeight: 500 }}
             tickSize={10}
           />
           <Radar

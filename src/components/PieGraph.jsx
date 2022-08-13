@@ -21,21 +21,29 @@ const CustomizedLegend = ({ payload }) => {
   return null;
 };
 
+/**
+ * @component
+ * @memberOf Content
+ * @description This graph shows us the objective score of a user
+ * @param {number} props Personal informations datas of the user
+ */
+
 function PieGraph({ score }) {
   let data = [{ name: "score", value: score * 100 }];
   return (
     <article className="panel-graph">
       <h1 className="score">Score</h1>
 
-      <ResponsiveContainer>
+      <ResponsiveContainer width="100%" height="100%">
         <RadialBarChart
-          width={"100%"}
-          height={"100%"}
-          innerRadius="72%"
-          outerRadius="85%"
+          innerRadius="70%"
+          outerRadius="87%"
           data={data}
           startAngle={90}
           endAngle={450}
+          margin={{
+            top: 7,
+          }}
         >
           <PolarAngleAxis
             type="number"

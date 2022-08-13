@@ -12,20 +12,27 @@ import {
 const CustomizedToolTip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="custom-tooltip-line">
-        <p className="desc">{payload[0].value + "kg"}</p>
-        <p className="desc">{payload[1].value + "Kcal"}</p>
+      <div className="custom-tooltip-BarChart">
+        <p>{payload[0].value + "kg"}</p>
+        <p>{payload[1].value + "Kcal"}</p>
       </div>
     );
   }
   return null;
 };
 
+/**
+ * @component
+ * @memberOf Content
+ * @description This graph shows us the daily activity of a user
+ * @param {array} props Activities datas of the user
+ */
+
 function Activity({ data }) {
   const formatXAxis = (tickItem, i) => {
     return i + 1;
   };
-  console.log(data);
+
   return (
     <article className="panel-activity">
       <header className="header-activity">
@@ -46,23 +53,20 @@ function Activity({ data }) {
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={data}
-          barCategoryGap={"20%"}
+          barCategoryGap="10%"
           barGap={8}
-          margin={{ top: 120, bottom: 30, right: 30 }}
+          margin={{ top: 50, bottom: 15, right: 30 }}
         >
           <CartesianGrid strokeDasharray="1 1" vertical={false} />
           <XAxis
             axisLine={false}
             tickLine={false}
-            domain={["dataMin", "dataMax"]}
-            tickMargin={25}
             tick={{ stroke: "#9B9EAC" }}
             tickFormatter={formatXAxis}
           />
           <YAxis
             orientation="right"
             tickCount={3}
-            domain={["dataMin - 1", "dataMax"]}
             dataKey="kg"
             axisLine={false}
             tickLine={false}

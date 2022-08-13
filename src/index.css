@@ -8,10 +8,11 @@
 
 a {
   text-decoration: none;
+  color: white;
 }
 
 a:visited {
-  color: white;
+  color: white !important;
 }
 
 .header-page {
@@ -27,6 +28,7 @@ nav {
 nav > ul {
   height: 100%;
   font-family: "Roboto", sans-serif;
+  padding: 0 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,7 +47,7 @@ nav > ul {
 }
 
 main {
-  margin: 70px 0 0 200px;
+  margin: 50px 0 0 170px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -79,15 +81,15 @@ p {
 }
 
 .section-content {
-  max-width: 850px;
+  max-width: 600px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 2em;
+  gap: 1em;
 }
 
 .aside-content {
-  margin-left: 2em;
+  margin-left: 0.5em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -100,19 +102,19 @@ article {
 
 .panel-activity {
   background: #fbfbfb;
-  height: 320px;
-  width: 835px;
+  height: 250px;
+  width: 500px;
   flex-basis: 100%;
 }
 
 .panel-graph {
-  height: 260px;
-  width: 260px;
+  height: 185px;
+  width: 185px;
 }
 
 .panel-metrics {
-  height: 125px;
-  width: 260px;
+  height: 100px;
+  width: 220px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -123,11 +125,21 @@ article {
   background-color: #ff0000;
 }
 
+.line-graph > p {
+  margin: 15px;
+  position: absolute;
+  color: white;
+  opacity: 50%;
+  font-size: 15px;
+}
+
 .radar-graph {
   background: #282d30;
 }
 
 .score {
+  position: absolute;
+  margin: 10px;
   font-size: 15px;
 }
 
@@ -135,7 +147,7 @@ article {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 95px;
+  margin-top: 55px;
   text-align: center;
 }
 
@@ -186,4 +198,37 @@ article {
 .panel-title {
   color: #20253a;
   font-size: 15px;
+}
+
+.notfound {
+  display: flex;
+}
+
+.notfound > h1 {
+  font-size: 80px;
+  color: red;
+}
+
+.custom-tooltip-BarChart {
+  border: none;
+  background-color: red;
+  padding: 10px;
+}
+
+.custom-tooltip-BarChart > p {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 8px;
+}
+
+.custom-tooltip-lineGraph {
+  border: none;
+  background-color: white;
+  padding: 1px 10px;
+}
+
+.custom-tooltip-lineGraph > p {
+  color: black;
+  font-family: "Roboto", sans-serif;
+  font-size: 8px;
 }

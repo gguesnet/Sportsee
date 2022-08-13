@@ -1,11 +1,11 @@
 import Sidebar from "./Sidebar";
 import Content from "./Content";
 
-function Main({ user }) {
+function Main({ userID }) {
   return (
     <>
       <Sidebar />
-      <Content user={user} />
+      <Content userID={userID} />
     </>
   );
 }

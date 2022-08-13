@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Title from "./Title";
 import Activity from "./Activity";
 import LineGraph from "./LineGraph";
 import RadarGraph from "./RadarGraph";
 import PieGraph from "./PieGraph";
 import Panel from "./Panel";
+import NotFound from "../NotFound";
 import { ApiService } from "../API";
 
 function Content() {
@@ -12,15 +14,16 @@ function Content() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  let { userID } = useParams();
+
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = new ApiService();
-        const activityDatas = await response.getUserActivity(18);
-        const averageDatas = await response.getUserAverage(18);
-        const userDatas = await response.getUserDatas(18);
-        const performanceDatas = await response.getUserPerformance(18);
-        // console.log(activityDatas, averageDatas, userDatas, performanceDatas);
+        const response = new ApiService(userID);
+        const activityDatas = await response.getUserActivity();
+        const averageDatas = await response.getUserAverage();
+        const userDatas = await response.getUserDatas();
+        const performanceDatas = await response.getUserPerformance();
         setData({
           activity: activityDatas,
           average: averageDatas,
@@ -40,30 +43,29 @@ function Content() {
 
   return (
     <main>
-      {data && <Title name={data.user.firstName} />}
-      <section className="section-content">
-        {data && console.log(data.user)}
-        {data && (
-          <>
+      {error && <NotFound />}
+      {data && (
+        <>
+          <Title name={data.user.firstName} />
+          <section className="section-content">
             <Activity data={data.activity.data} />
             <LineGraph data={data.average.data} />
             <RadarGraph data={data.performance.data} />
             <PieGraph score={data.user.score} />
-          </>
-        )}
-      </section>
-      <aside className="aside-content">
-        {data &&
-          data.user.info.map(({ value, label, unit }) => (
-            <Panel
-              key={value}
-              img={`./img/${label}.svg`}
-              value={value}
-              unit={unit}
-              label={label}
-            />
-          ))}
-      </aside>
+          </section>
+          <aside className="aside-content">
+            {data.user.info.map(({ value, label, unit }) => (
+              <Panel
+                key={value}
+                img={`/img/${label}.svg`}
+                value={value}
+                unit={unit}
+                label={label}
+              />
+            ))}
+          </aside>
+        </>
+      )}
     </main>
   );
 }

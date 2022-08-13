@@ -1,12 +1,11 @@
 import Header from "./components/Header";
 import Main from "./components/Main";
-import "./App.css";
 
-function App({ user }) {
+function App({ userID }) {
   return (
     <>
       <Header />
-      <Main user={user} />
+      <Main userID={userID} />
     </>
   );
 }

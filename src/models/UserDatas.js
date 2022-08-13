@@ -1,5 +1,6 @@
 export default class UserDatas {
   constructor({ data }) {
+    console.log(data);
     this.id = data.id;
     this.firstName = data.userInfos.firstName;
     this.lastName = data.userInfos.lastName;
